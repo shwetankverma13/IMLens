@@ -12,7 +12,7 @@ function Landing({navigation}: any): JSX.Element {
         <Text style={styles.subtitle}>Your Catchy Subtitle Here</Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('productDescription')}>
+          onPress={() => navigation.navigate('catalog')}>
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
       </View>
