@@ -1,10 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Catalogue from '../Pages/Catalogue';
 import Landing from '../Pages/Landing';
 
 const stack = createNativeStackNavigator();
-const App = () => {
+const Navigation = () => {
   return (
     <NavigationContainer>
       <stack.Navigator
@@ -16,4 +15,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Navigation;
