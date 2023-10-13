@@ -19,7 +19,7 @@ const Headers = () => {
         <UserAvatar
           rounded
           size={50}
-          name="U s e r"
+          name="I L"
           src="IMLens/src/Assets/AvatarIcon.png"
         />
       </View>
