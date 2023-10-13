@@ -15,7 +15,7 @@ const Headers = () => {
           style={{width: 180, height: 80, opacity: 1}}
         />
       </View>
-      <View style={{marginRight: '4%'}}>
+      <View style={{marginRight: '6%'}}>
         <UserAvatar
           rounded
           size={50}

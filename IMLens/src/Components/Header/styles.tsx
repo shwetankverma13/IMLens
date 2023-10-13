@@ -3,7 +3,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '10%',
-    backgroundColor: '#007AFF',
+    backgroundColor: '#1B8CDE',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
