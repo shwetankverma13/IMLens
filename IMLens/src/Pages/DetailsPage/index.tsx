@@ -22,7 +22,10 @@ const ProductDescription = ({navigation}: any) => {
             navigation.goBack();
           }}
           style={styles.backButton}>
-          <Button icon="alpha-i" children={undefined} />
+          <Image
+            source={require('IMLens/src/Assets/backbutton.png')}
+            style={{width: 20, height: 20}}
+          />
         </TouchableOpacity>
       </View>
       <View style={styles.productContent}>

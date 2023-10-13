@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, FlatList, ScrollView} from 'react-native';
 import {Image} from 'react-native-elements';
 import {
@@ -11,6 +11,9 @@ import {
   IconButton,
   MD3Colors,
 } from 'react-native-paper';
+import {getProductDetails} from '../../Actions/GetProdcutDetails';
+import {getProductDetailsRequest} from '../../Constants/AxiosRequest';
+import {useDispatch, useSelector} from 'react-redux';
 const items = [
   {
     id: '1',
@@ -50,7 +53,23 @@ const items = [
   },
   // Add more items as needed
 ];
-const CatalogPage = () => {
+const CatalogPage = ({navigation}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const data = async () => {
+      const res = await getProductDetailsRequest('lang');
+      // console.log(lang);
+      dispatch(getProductDetails(res.data));
+    };
+    data();
+  }, []);
+
+  const DATA = useSelector(
+    (state: any) => state.getProductData.getProductDetailsData,
+  );
+  console.log(DATA, 'abc');
+
   return (
     <PaperProvider>
       <View style={{padding: 10}}>
@@ -68,7 +87,12 @@ const CatalogPage = () => {
             /> */}
           </View>
           <View>
-            <Button onPress={() => {}}>Scan-Again</Button>
+            <Button
+              onPress={() => {
+                navigation.navigate('productDescription');
+              }}>
+              Scan-Again
+            </Button>
           </View>
         </View>
         <Title>Catalog Title</Title>
