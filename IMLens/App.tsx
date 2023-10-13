@@ -1,7 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {PaperProvider} from 'react-native-paper';
+import Landing from './src/Pages/Landing';
 
 function App(): JSX.Element {
-  return <Text>Hello World I aasam</Text>;
+  return (
+    <PaperProvider>
+      <Landing />
+    </PaperProvider>
+  );
 }
 export default App;

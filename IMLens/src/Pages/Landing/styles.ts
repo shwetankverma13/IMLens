@@ -1,35 +1,35 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
-  footer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderWidth: 1,
-    backgroundColor: 'white',
-    flexDirection: 'row',
+  container: {
     flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
   },
-  verticleLine: {
-    height: '100%',
-    width: 1,
-    backgroundColor: 'grey',
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 30,
   },
   button: {
-    paddingHorizontal: 60,
-    paddingVertical: 15,
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 5,
   },
-  header: {
-    height: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 40,
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-    borderBottomColor: '#BBC4C2',
-    borderBottomWidth: 0.5,
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
