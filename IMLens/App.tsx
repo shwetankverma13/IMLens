@@ -6,6 +6,7 @@ import Landing from './src/Pages/Landing';
 import SuccessPage from './src/Pages/Success';
 import CatalogPage from './src/Pages/Catalogue';
 // import Landing from './src/Pages/Landing';
+import Loader from './src/Pages/Loader';
 
 const stack = createNativeStackNavigator();
 const Navigation = () => {
@@ -13,7 +14,8 @@ const Navigation = () => {
     <NavigationContainer>
       <stack.Navigator
         screenOptions={{headerShown: false}}
-        initialRouteName="landing">
+        initialRouteName="loader">
+        <stack.Screen name="loader" component={Loader} />
         <stack.Screen name="landing" component={Landing} />
         <stack.Screen
           name="productDescription"
