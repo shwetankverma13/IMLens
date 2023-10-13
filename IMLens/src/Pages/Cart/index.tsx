@@ -18,6 +18,27 @@ const Cart = ({navigation}: any) => {
     <>
       <ScrollView style={styles.white}>
         <View style={styles.cartHeader}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <View>
+              <Image
+                source={require('IMLens/src/Assets/backbutton.png')}
+                style={{width: 20, height: 20}}
+              />
+            </View>
+            <View>
+              <Button
+                onPress={() => {
+                  navigation.navigate('catalog');
+                }}>
+                {'Back'}
+              </Button>
+            </View>
+          </View>
           <Text style={styles.heading}>Your Cart</Text>
         </View>
         <FlatList
@@ -74,7 +95,8 @@ const Cart = ({navigation}: any) => {
                       if (data.data.length == 1) {
                         navigation.navigate('home'); //dispatch doesn't pause execution the next statements in your component. This means that any code that comes after the dispatch call will continue to execute immediately, and the component will re-render after the state update has completed.
                       }
-                    }} />
+                    }}
+                  />
                 </View>
               </View>
             </View>
@@ -117,6 +139,7 @@ const Cart = ({navigation}: any) => {
   );
 };
 import {StyleSheet} from 'react-native';
+import {Button} from 'react-native-paper';
 const styles = StyleSheet.create({
   rowViewP: {
     flexDirection: 'row',

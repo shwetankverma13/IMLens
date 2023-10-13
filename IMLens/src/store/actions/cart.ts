@@ -28,7 +28,7 @@ export const decrement = (num1: number) => {
   };
 };
 export const addItem = (
-  id: number,
+  id: string,
   img: string,
   num: number,
   str2: string,

@@ -1,3 +1,4 @@
+import {useRoute} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-paper';
@@ -20,7 +21,13 @@ const ProductDescription = ({navigation}: any) => {
   const productDetail = useSelector(
     (state: any) => state.getProductData.getProductDetailsData,
   );
-
+  const route = useRoute();
+  // const { data } = route.params;
+  console.log('qwerty', route.params?.data);
+  // const {data} = navigation.params;
+  const amount = parseInt(
+    route.params?.data?.Amt.substring(0, route.params?.data?.Amt.length - 2),
+  );
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -36,14 +43,30 @@ const ProductDescription = ({navigation}: any) => {
         </TouchableOpacity>
       </View>
       <View style={styles.productContent}>
-        <Image source={product.image} style={styles.productImage} />
-        <Text style={styles.productTitle}>{product.title}</Text>
-        <Text style={styles.productDescription}>{product.description}</Text>
+        <Image
+          source={{uri: route.params?.data?.URL}}
+          style={styles.productImage}
+        />
+        <Text style={styles.productTitle}>
+          {route.params?.data?.ProductName}
+        </Text>
+        <Text style={styles.productDescription}>
+          {route.params?.data?.Description}
+        </Text>
       </View>
       <TouchableOpacity
         style={styles.counterButtons}
         onPress={() => {
-          dispatch(addItem(12, '12', 100, 'amar', 100, 1));
+          dispatch(
+            addItem(
+              route.params?.data?.SKU,
+              route.params?.data?.URL,
+              amount,
+              route.params?.data?.ProductName,
+              amount,
+              1,
+            ),
+          );
           navigation.navigate('cart');
         }}>
         <Text>Add to Cart</Text>
