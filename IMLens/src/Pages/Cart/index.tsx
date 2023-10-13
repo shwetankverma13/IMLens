@@ -26,7 +26,7 @@ const Cart = ({navigation}: any) => {
             }}>
             <View>
               <Image
-                source={require('IMLens/src/Assets/backbutton.png')}
+                source={require('../../Assets/backbutton.png')}
                 style={{width: 20, height: 20}}
               />
             </View>
@@ -50,7 +50,8 @@ const Cart = ({navigation}: any) => {
                 <View style={{backgroundColor: '#F6F6F6'}}>
                   <Image
                     source={{uri: `${item.image}`}}
-                    style={{height: 32, width: 32}}></Image>
+                    style={{height: 32, width: 32}}
+                  />
                 </View>
                 <View>
                   <Text>{item.title}</Text>
@@ -100,7 +101,8 @@ const Cart = ({navigation}: any) => {
                 </View>
               </View>
             </View>
-          )}></FlatList>
+          )}
+        />
         <View style={styles.couponBox}>
           <View>
             <Text style={styles.weightedText}>WELCOME20</Text>
@@ -122,7 +124,7 @@ const Cart = ({navigation}: any) => {
             <Text style={styles.greyColor}>₹ 500</Text>
           </View>
         </View>
-        <View style={styles.dottedLine}></View>
+        <View style={styles.dottedLine} />
         <View style={styles.rowViewP}>
           <Text style={styles.weightedText}>Total Amount</Text>
           <Text style={styles.weightedText}>₹ {total}</Text>

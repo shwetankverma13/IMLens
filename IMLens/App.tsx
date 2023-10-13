@@ -9,6 +9,7 @@ import Loader from './src/Pages/Loader';
 import Cart from './src/Pages/Cart';
 import store from './src/store/store';
 import {Provider} from 'react-redux';
+import Scanning from './src/Pages/Scanning';
 
 const stack = createNativeStackNavigator();
 const Navigation = () => {
@@ -20,6 +21,7 @@ const Navigation = () => {
           initialRouteName="loader">
           <stack.Screen name="loader" component={Loader} />
           <stack.Screen name="landing" component={Landing} />
+          <stack.Screen name="Scanning" component={Scanning} />
           <stack.Screen
             name="productDescription"
             component={ProductDescription}

@@ -20,7 +20,7 @@ const Headers = () => {
           rounded
           size={50}
           name="I L"
-          src="IMLens/src/Assets/AvatarIcon.png"
+          src="./../../Assets/AvatarIcon.png"
         />
       </View>
     </View>

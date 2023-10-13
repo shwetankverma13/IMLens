@@ -14,7 +14,6 @@ import {
 import {getProductDetails} from '../../Actions/GetProdcutDetails';
 import {getProductDetailsRequest} from '../../Constants/AxiosRequest';
 import {useDispatch, useSelector} from 'react-redux';
-
 const CatalogPage = ({navigation}) => {
   const dispatch = useDispatch();
 
@@ -39,7 +38,7 @@ const CatalogPage = ({navigation}) => {
           style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
           <View>
             <Image
-              source={require('IMLens/src/Assets/barcode-scanner.png')}
+              source={require('../../Assets/barcode-scanner.png')}
               style={{width: 20, height: 20}}
             />
             {/* <IconButton

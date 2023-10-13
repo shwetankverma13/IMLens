@@ -41,7 +41,7 @@ const Loader = ({navigation}: any) => {
         },
       ]}>
       <Image
-        source={require('IMLens/src/Assets/IMLens_logo.png')}
+        source={require('../../Assets/IMLens_logo.png')}
         style={styles.image}
       />
       <Text style={styles.text}>IMagineers</Text>

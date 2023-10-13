@@ -14,7 +14,7 @@ const ProductDescription = ({navigation}: any) => {
     title: 'Sample Product',
     description:
       'This is a sample product description. Replace this with your product details.',
-    image: require('IMLens/src/Assets/Chair.jpeg'), // Replace with the actual image source
+    image: require('../../Assets/Chair.jpeg'), // Replace with the actual image source
   };
 
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const ProductDescription = ({navigation}: any) => {
           }}
           style={styles.backButton}>
           <Image
-            source={require('IMLens/src/Assets/backbutton.png')}
+            source={require('../../Assets/backbutton.png')}
             style={{width: 20, height: 20}}
           />
         </TouchableOpacity>

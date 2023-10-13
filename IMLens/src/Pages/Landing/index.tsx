@@ -19,7 +19,7 @@ function Landing({navigation}: any): JSX.Element {
         </Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('catalog')}>
+          onPress={() => navigation.navigate('Scanning')}>
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
       </View>

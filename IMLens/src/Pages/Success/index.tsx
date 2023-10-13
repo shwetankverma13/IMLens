@@ -14,7 +14,7 @@ const SuccessPage = () => {
         Booked Successfully!!
       </Text>
       <Image
-        source={require('IMLens/src/Assets/bookedScreen.png')} // Specify the path to your image
+        source={require('../../Assets/bookedScreen.png')} // Specify the path to your image
         style={{
           width: 300,
           height: 300,
