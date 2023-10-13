@@ -35,20 +35,22 @@ def image_similarity_histogram(url1, url2):
 
     return similarity_score
 
-if __name__ == "__main__":
-    # Replace these URLs with the URLs of your images
-    image1_url = 'https://m.media-amazon.com/images/I/51qJ4dqqQuL._SL1500_.jpg'
-    image2_url = 'https://m.media-amazon.com/images/I/51JexncwOML._SL1500_.jpg'
+def check_matching(image1_url, image2_url):
+    try:
+        similarity_score = image_similarity_histogram(image1_url, image2_url)
 
-    similarity_score = image_similarity_histogram(image1_url, image2_url)
+        # Display the similarity score
+        print(f"Similarity Score: {similarity_score}")
 
-    # Display the similarity score
-    print(f"Similarity Score: {similarity_score}")
+        # You can set a threshold for similarity and decide whether the images are similar or not
+        similarity_threshold = 0.5  # Adjust the threshold as needed
 
-    # You can set a threshold for similarity and decide whether the images are similar or not
-    similarity_threshold = 0.8  # Adjust the threshold as needed
-
-    if similarity_score > similarity_threshold:
-        print("Images are similar.")
-    else:
-        print("Images are not similar.")
+        if similarity_score > similarity_threshold:
+            return True
+            print("Images are similar.")
+        else:
+            return False
+            print("Images are not similar.")
+    except Exception as e:
+        print(e)
+        return False

@@ -1,15 +1,15 @@
-import types
-
-from fastapi import FastAPI, File, UploadFile, Form
+from fastapi import FastAPI
 from google.cloud import vision
 import pandas as pd
 
+from IMLensBe.similarity import check_matching
 
 app = FastAPI()
 
 key_file = "IMLensBe/imagineers-401514-e95b9f361c9f.json"
 
 client = vision.ImageAnnotatorClient.from_service_account_json(key_file)
+
 
 @app.get("/SkuList")
 async def skuList():
@@ -29,7 +29,6 @@ async def skuList():
 
 @app.post("/uploadfile/")
 async def create_upload_file(file_url: str):
-
     responseLable = client.annotate_image({
         'image': {'source': {'image_uri': file_url}},
         'features': [{'type_': vision.Feature.Type.LABEL_DETECTION}]
@@ -59,4 +58,10 @@ async def create_upload_file(file_url: str):
 
     filtered_products = [product for product in data if product['Labels'] in lableList]
 
-    return {"name" : filtered_products}
+    matchedData = []
+    for each_item in filtered_products:
+        matching = check_matching(file_url, each_item["URL"])
+        if matching:
+            matchedData.append(each_item)
+
+    return {"name": filtered_products}
