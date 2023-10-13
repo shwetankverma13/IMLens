@@ -41,10 +41,10 @@ const Loader = ({navigation}: any) => {
         },
       ]}>
       <Image
-        source={require('IMLens/src/Assets/Chair.jpeg')}
+        source={require('IMLens/src/Assets/IMLens_logo.png')}
         style={styles.image}
       />
-      <Text style={styles.text}>Loading...</Text>
+      <Text style={styles.text}>IMagineers</Text>
     </Animated.View>
   );
 };
@@ -52,17 +52,19 @@ const Loader = ({navigation}: any) => {
 const styles = StyleSheet.create({
   loader: {
     flex: 1,
-    backgroundColor: 'lightblue',
+    backgroundColor: '#1B8CDE',
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    width: 100, // Set your desired image width
-    height: 100, // Set your desired image height
+    width: 400, // Set your desired image width
+    height: 400, // Set your desired image height
+    opacity: 1,
   },
   text: {
-    fontSize: 24,
+    fontSize: 30,
     marginTop: 16,
+    color: 'white',
   },
 });
 
