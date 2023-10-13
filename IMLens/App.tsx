@@ -6,8 +6,9 @@ import Landing from './src/Pages/Landing';
 import SuccessPage from './src/Pages/Success';
 import CatalogPage from './src/Pages/Catalogue';
 import Loader from './src/Pages/Loader';
+import Cart from './src/Pages/Cart';
+import store from './src/store/store';
 import {Provider} from 'react-redux';
-import store from './store';
 
 const stack = createNativeStackNavigator();
 const Navigation = () => {
@@ -25,6 +26,7 @@ const Navigation = () => {
           />
           <stack.Screen name="catalog" component={CatalogPage} />
           <stack.Screen name="successPage" component={SuccessPage} />
+          <stack.Screen name="cart" component={Cart} />
         </stack.Navigator>
       </NavigationContainer>
     </Provider>

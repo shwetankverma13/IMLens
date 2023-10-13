@@ -100,7 +100,10 @@ const CatalogPage = ({navigation}) => {
       <ScrollView
         contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {items.map(item => (
-          <Card key={item.id} style={{width: '45%', margin: 5}}>
+          <Card
+            key={item.id}
+            style={{width: '45%', margin: 5}}
+            onPress={() => navigation.navigate('productDescription')}>
             <Card.Cover source={item.image} />
             <Card.Content>
               <Title>{item.description}</Title>

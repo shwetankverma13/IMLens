@@ -2,11 +2,11 @@ from fastapi import FastAPI
 from google.cloud import vision
 import pandas as pd
 
-from IMLensBe.similarity import check_matching
+from similarity import check_matching
 
 app = FastAPI()
 
-key_file = "IMLensBe/imagineers-401514-e95b9f361c9f.json"
+key_file = "imagineers-401514-e95b9f361c9f.json"
 
 client = vision.ImageAnnotatorClient.from_service_account_json(key_file)
 
@@ -14,7 +14,7 @@ client = vision.ImageAnnotatorClient.from_service_account_json(key_file)
 @app.get("/SkuList")
 async def skuList():
     try:
-        excel_file = "IMLensBe/Dataset.xlsx"
+        excel_file = "./Dataset.xlsx"
         df = pd.read_excel(excel_file)
 
         data = []
@@ -48,7 +48,7 @@ async def create_upload_file(file_url: str):
             if lable_object.name not in lableList:
                 lableList.append(lable_object.name)
 
-    excel_file = "IMLensBe/Dataset.xlsx"
+    excel_file = "./Dataset.xlsx"
     df = pd.read_excel(excel_file)
 
     data = []

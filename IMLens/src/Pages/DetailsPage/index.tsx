@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
+import {addItem, increment} from '../../store/actions/cart';
 //import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import {Icon} from 'react-native-vector-icons/Icon';
 // import {Icon} from 'react-native-elements';
@@ -14,12 +16,17 @@ const ProductDescription = ({navigation}: any) => {
     image: require('IMLens/src/Assets/Chair.jpeg'), // Replace with the actual image source
   };
 
+  const dispatch = useDispatch();
+  const productDetail = useSelector(
+    (state: any) => state.getProductData.getProductDetailsData,
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
-            navigation.goBack();
+            navigation.navigate('cart');
           }}
           style={styles.backButton}>
           <Image
@@ -33,6 +40,14 @@ const ProductDescription = ({navigation}: any) => {
         <Text style={styles.productTitle}>{product.title}</Text>
         <Text style={styles.productDescription}>{product.description}</Text>
       </View>
+      <TouchableOpacity
+        style={styles.counterButtons}
+        onPress={() => {
+          dispatch(addItem(12, '12', 100, 'amar', 100, 1));
+          navigation.navigate('cart');
+        }}>
+        <Text>Add to Cart</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -74,6 +89,12 @@ const styles = StyleSheet.create({
   productDescription: {
     fontSize: 16,
     marginTop: 10,
+  },
+  counterButtons: {
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    borderRadius: 4,
+    backgroundColor: 'blue',
   },
 });
 
