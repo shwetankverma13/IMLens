@@ -75,7 +75,9 @@ const CatalogPage = ({navigation}: any) => {
         </View>
       </View>
       <View>
-        <Text>No matching products found. Here are some other products</Text>
+        <Text style={{color: 'red'}}>
+          No matching products found. Here are some other products
+        </Text>
       </View>
       <Title
         style={{

@@ -13,7 +13,19 @@ import styles from './styles';
 import {useRoute} from '@react-navigation/native';
 const FilteredCatalogPage = ({navigation}: any) => {
   const route = useRoute();
-  const data = route.params?.data;
+  let data = route.params?.data;
+  // data = [
+  //   {
+  //     Amt: '1,800/-',
+  //     Category: 'Bath Fittings',
+  //     Description:
+  //       'Precision Showering Redefined: Where Technology Meets Your Daily Refresh.',
+  //     Labels: 'Tap',
+  //     Product_Name: 'IVAS MA-36015 SWAN NECK PILLAR COCK WITH SWINGING SPOUT',
+  //     SKU: 'IM10037466',
+  //     URL: 'https://www.ivas.homes/images/products/bath-fittings/faucets/matrix/IM10037466.webp',
+  //   },
+  // ];
 
   const NODATA = [{}, {}, {}, {}];
 
@@ -26,7 +38,7 @@ const FilteredCatalogPage = ({navigation}: any) => {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <View style={{marginBottom: '13.5%'}}>
+          <View style={{marginBottom: '14.5%'}}>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('Scanning');
@@ -34,7 +46,12 @@ const FilteredCatalogPage = ({navigation}: any) => {
               style={styles.backButton}>
               <Image
                 source={require('../../Assets/barcode-scanner.png')}
-                style={{width: 20, height: 20}}
+                style={{
+                  width: 20,
+                  height: 20,
+                  tintColor: 'white',
+                  marginBottom: 55,
+                }}
               />
             </TouchableOpacity>
           </View>
@@ -48,7 +65,15 @@ const FilteredCatalogPage = ({navigation}: any) => {
           </View>
         </View>
       </View>
-      <Title style={{marginBottom: 10, marginLeft: 10}}>Catalog Title</Title>
+      <Title
+        style={{
+          marginBottom: 10,
+          marginLeft: '35%',
+          fontWeight: 'bold',
+          fontSize: 20,
+        }}>
+        Catalogue
+      </Title>
       <ScrollView
         contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {data
