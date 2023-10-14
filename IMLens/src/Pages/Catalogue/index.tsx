@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, ScrollView, TouchableOpacity} from 'react-native';
+import {View, ScrollView, TouchableOpacity, Text} from 'react-native';
 import {Skeleton} from '@rneui/base';
 import {Image} from 'react-native-elements';
 import {
@@ -73,6 +73,9 @@ const CatalogPage = ({navigation}: any) => {
             </Button>
           </View>
         </View>
+      </View>
+      <View>
+        <Text>No matching products found. Here are some other products</Text>
       </View>
       <Title
         style={{
