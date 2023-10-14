@@ -1,6 +1,13 @@
 import {useRoute} from '@react-navigation/native';
 import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addItem} from '../../store/actions/cart';
 //import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -19,7 +26,7 @@ const ProductDescription = ({navigation}: any) => {
 
   return (
     <>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
@@ -68,7 +75,7 @@ const ProductDescription = ({navigation}: any) => {
             Add to Cart
           </Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </>
   );
 };
