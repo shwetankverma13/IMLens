@@ -76,7 +76,7 @@ const CatalogPage = ({navigation}: any) => {
                 }>
                 <Card.Cover source={{uri: `${item.URL}`}} />
                 <Card.Content>
-                  <Title>{item.ProductName}</Title>
+                  <Title>{item.Product_Name}</Title>
                   <Paragraph>{item.Description}</Paragraph>
                 </Card.Content>
               </Card>
