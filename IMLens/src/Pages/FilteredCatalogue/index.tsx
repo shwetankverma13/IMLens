@@ -14,6 +14,7 @@ import {useRoute} from '@react-navigation/native';
 const FilteredCatalogPage = ({navigation}: any) => {
   const route = useRoute();
   let data = route.params?.data;
+  console.log(route, 'route');
   // data = [
   //   {
   //     Amt: '1,800/-',
