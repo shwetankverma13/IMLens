@@ -41,10 +41,10 @@ const CatalogPage = ({navigation}: any) => {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <View style={{marginBottom: '13%'}}>
+          <View style={{marginBottom: '13.5%'}}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('catalog');
+                navigation.navigate('Scanning');
               }}
               style={styles.backButton}>
               <Image
@@ -67,9 +67,9 @@ const CatalogPage = ({navigation}: any) => {
       <ScrollView
         contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {DATA.data
-          ? DATA?.data?.map((item: any) => (
+          ? DATA?.data?.map((item: any, index: any) => (
               <Card
-                key={item.id}
+                key={index}
                 style={{width: '45%', margin: 5}}
                 onPress={() =>
                   navigation.navigate('productDescription', {data: item})
