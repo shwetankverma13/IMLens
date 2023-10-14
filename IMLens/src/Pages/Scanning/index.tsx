@@ -39,14 +39,23 @@ const Scanning = ({navigation}: any) => {
       maxWidth: 2000,
     };
 
-    launchImageLibrary(options, response => {
+    launchImageLibrary(options, async response => {
+      console.log('inside imgae lib');
       if (response?.didCancel) {
         console.log('User cancelled image picker');
       } else if (response?.error) {
         console.log('Image picker error: ', response?.error);
       } else {
-        let imageUri = response?.uri || response.assets?.[0]?.uri;
+        let imageUri = response?.uri || response?.assets?.[0]?.uri;
         setSelectedImage(imageUri);
+        setClicked(true);
+        // console.log(imageUri, 'imageURI');
+        await reference.putFile(imageUri);
+        const url = await storage()
+          .ref('/images/test/clicked-sku-images.png')
+          .getDownloadURL();
+        // console.log(url, 'public URL');
+        setUrl(url);
       }
     });
   };
@@ -60,7 +69,7 @@ const Scanning = ({navigation}: any) => {
     };
 
     launchCamera(options, async response => {
-      // console.log('Response = ', response);
+      console.log('Response =------ ', response);
       if (response?.didCancel) {
         // console.log('User cancelled camera');
       } else if (response?.error) {
@@ -114,17 +123,17 @@ const Scanning = ({navigation}: any) => {
             resizeMode="contain"
           />
         )}
-        {clicked && !loading && (
-          <View
-            style={{
-              marginTop: 20,
-              width: '60%',
-              marginLeft: '20%',
-              borderRadius: 10,
-            }}>
-            <Button title="Proceed" onPress={handleClick} />
-          </View>
-        )}
+
+        <View
+          style={{
+            marginTop: 20,
+            width: '60%',
+            marginLeft: '20%',
+            borderRadius: 10,
+          }}>
+          <Button title="Proceed" onPress={handleClick} />
+        </View>
+
         {clicked && response?.length && !loading && (
           <View
             style={{
