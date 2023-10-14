@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import {Button, Image, View} from 'react-native';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import storage from '@react-native-firebase/storage';
+import axios from 'axios';
 
 const Scanning = ({navigation}: any) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [clicked, setClicked] = useState(false);
+  const [response, setResponse] = useState(null);
+
+  const reference = storage().ref('/images/test/clicked-sku-images.png');
 
   const openImagePicker = () => {
     const options = {
@@ -34,7 +39,7 @@ const Scanning = ({navigation}: any) => {
       maxWidth: 2000,
     };
 
-    launchCamera(options, response => {
+    launchCamera(options, async response => {
       console.log('Response = ', response);
       if (response.didCancel) {
         console.log('User cancelled camera');
@@ -45,10 +50,34 @@ const Scanning = ({navigation}: any) => {
         let imageUri = response.uri || response.assets?.[0]?.uri;
         setSelectedImage(imageUri);
         setClicked(true);
-        console.log(imageUri);
+        console.log(imageUri, 'imageURI');
+        await reference.putFile(imageUri);
+        const url = await storage()
+          .ref('/images/test/clicked-sku-images.png')
+          .getDownloadURL();
+        console.log(url, 'public URL');
+        const payload = {key: url};
+
+        // Make a POST request to a URL with the payload
+        axios
+          .post(
+            'https://imagineers-401514.el.r.appspot.com/uploadfile/?file_url=',
+            payload,
+          )
+          .then(response => {
+            // Store the response in your state
+            setResponse(response.data);
+          })
+          .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+          });
       }
     });
   };
+
+  console.log(selectedImage, 'selected Image');
+  console.log(response, 'fetched data');
 
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
