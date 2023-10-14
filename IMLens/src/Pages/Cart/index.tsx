@@ -24,10 +24,15 @@ const Cart = ({navigation}: any) => {
               alignItems: 'center',
             }}>
             <View>
-              <Image
-                source={require('../../Assets/backbutton.png')}
-                style={{width: 20, height: 20}}
-              />
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('catalog');
+                }}>
+                <Image
+                  source={require('../../Assets/backbutton.png')}
+                  style={{width: 20, height: 20}}
+                />
+              </TouchableOpacity>
             </View>
             <View>
               <Button

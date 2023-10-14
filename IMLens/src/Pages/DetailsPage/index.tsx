@@ -45,7 +45,7 @@ const ProductDescription = ({navigation}: any) => {
             style={styles.productImage}
           />
           {/* <Image source={{uri: product.imageURL}} style={styles.image} /> */}
-          <Text style={styles.title}>{route.params?.data?.ProductName}</Text>
+          <Text style={styles.title}>{route.params?.data?.Product_Name}</Text>
           <Text style={styles.price}>Price: ₹{route.params?.data?.Amt}</Text>
           <Text style={styles.description}>
             {route.params?.data?.Description}
