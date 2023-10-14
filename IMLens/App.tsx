@@ -10,6 +10,7 @@ import Cart from './src/Pages/Cart';
 import store from './src/store/store';
 import {Provider} from 'react-redux';
 import Scanning from './src/Pages/Scanning';
+import FilteredCatalogPage from './src/Pages/FilteredCatalogue';
 
 const stack = createNativeStackNavigator();
 const Navigation = () => {
@@ -29,6 +30,10 @@ const Navigation = () => {
           <stack.Screen name="catalog" component={CatalogPage} />
           <stack.Screen name="successPage" component={SuccessPage} />
           <stack.Screen name="cart" component={Cart} />
+          <stack.Screen
+            name="filteredCatalog"
+            component={FilteredCatalogPage}
+          />
         </stack.Navigator>
       </NavigationContainer>
     </Provider>

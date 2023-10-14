@@ -9,26 +9,11 @@ import {
   Title,
   Paragraph,
 } from 'react-native-paper';
-import {getProductDetails} from '../../Actions/GetProdcutDetails';
-import {getProductDetailsRequest} from '../../Constants/AxiosRequest';
-import {useDispatch, useSelector} from 'react-redux';
 import styles from './styles';
-const CatalogPage = ({navigation}: any) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const data = async () => {
-      const res = await getProductDetailsRequest('lang');
-      // console.log(lang);
-      dispatch(getProductDetails(res.data));
-    };
-    data();
-  }, []);
-
-  const DATA = useSelector(
-    (state: any) => state.getProductData.getProductDetailsData,
-  );
-  console.log(DATA, 'abc');
+import {useRoute} from '@react-navigation/native';
+const FilteredCatalogPage = ({navigation}: any) => {
+  const route = useRoute();
+  const data = route.params?.data;
 
   const NODATA = [{}, {}, {}, {}];
 
@@ -66,8 +51,8 @@ const CatalogPage = ({navigation}: any) => {
       <Title style={{marginBottom: 10, marginLeft: 10}}>Catalog Title</Title>
       <ScrollView
         contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
-        {DATA.data
-          ? DATA?.data?.map((item: any, index: any) => (
+        {data
+          ? data?.map((item: any, index: any) => (
               <Card
                 key={index}
                 style={{width: '45%', margin: 5}}
@@ -99,4 +84,4 @@ const CatalogPage = ({navigation}: any) => {
   );
 };
 
-export default CatalogPage;
+export default FilteredCatalogPage;

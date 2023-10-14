@@ -88,11 +88,21 @@ const Scanning = ({navigation}: any) => {
           resizeMode="contain"
         />
       )}
-      {clicked && (
+      {clicked && !response && (
         <View style={{marginTop: 20, marginBottom: 50}}>
           <Button
             title="Proceed"
             onPress={() => navigation.navigate('catalog')}
+          />
+        </View>
+      )}
+      {clicked && response && (
+        <View style={{marginTop: 20, marginBottom: 50}}>
+          <Button
+            title="Proceed"
+            onPress={() =>
+              navigation.navigate('filteredCatalog', {data: response})
+            }
           />
         </View>
       )}
