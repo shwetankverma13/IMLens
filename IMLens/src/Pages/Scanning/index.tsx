@@ -56,12 +56,12 @@ const Scanning = ({navigation}: any) => {
           .ref('/images/test/clicked-sku-images.png')
           .getDownloadURL();
         console.log(url, 'public URL');
-        const payload = {key: url};
+        const payload = {file_url: url};
 
         // Make a POST request to a URL with the payload
         axios
           .post(
-            'https://imagineers-401514.el.r.appspot.com/uploadfile/?file_url=',
+            'https://imagineers-401514.el.r.appspot.com/upload_file',
             payload,
           )
           .then(response => {
