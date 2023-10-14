@@ -1,20 +1,19 @@
 import React, {useEffect} from 'react';
-import {View, Text, FlatList, ScrollView} from 'react-native';
+import {View, ScrollView, TouchableOpacity} from 'react-native';
+import {Skeleton} from '@rneui/themed';
 import {Image} from 'react-native-elements';
 import {
   Card,
   Button,
-  FAB,
   PaperProvider,
   Title,
   Paragraph,
-  IconButton,
-  MD3Colors,
 } from 'react-native-paper';
 import {getProductDetails} from '../../Actions/GetProdcutDetails';
 import {getProductDetailsRequest} from '../../Constants/AxiosRequest';
 import {useDispatch, useSelector} from 'react-redux';
-const CatalogPage = ({navigation}) => {
+import styles from './styles';
+const CatalogPage = ({navigation}: any) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,50 +30,70 @@ const CatalogPage = ({navigation}) => {
   );
   console.log(DATA, 'abc');
 
+  const NODATA = [{}, {}, {}, {}];
+
   return (
     <PaperProvider>
-      <View style={{padding: 10}}>
+      <View style={styles.header}>
         <View
-          style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-          <View>
-            <Image
-              source={require('../../Assets/barcode-scanner.png')}
-              style={{width: 20, height: 20}}
-            />
-            {/* <IconButton
-              icon="thumbs-up"
-              iconColor={MD3Colors.error50}
-              size={20}
-            /> */}
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+          <View style={{marginBottom: '13%'}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('catalog');
+              }}
+              style={styles.backButton}>
+              <Image
+                source={require('../../Assets/barcode-scanner.png')}
+                style={{width: 20, height: 20}}
+              />
+            </TouchableOpacity>
           </View>
-          <View>
+          <View style={{marginLeft: '10%', marginTop: '2%'}}>
             <Button
               onPress={() => {
-                navigation.navigate('productDescription');
+                navigation.navigate('Scanning');
               }}>
-              Scan-Again
+              <Title style={{color: 'white'}}>Scan-Again</Title>
             </Button>
           </View>
         </View>
-        <Title>Catalog Title</Title>
       </View>
+      <Title style={{marginBottom: 10, marginLeft: 10}}>Catalog Title</Title>
       <ScrollView
         contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
-        {DATA.data &&
-          DATA?.data?.map(item => (
-            <Card
-              key={item.id}
-              style={{width: '45%', margin: 5}}
-              onPress={() =>
-                navigation.navigate('productDescription', {data: item})
-              }>
-              <Card.Cover source={{uri: `${item.URL}`}} />
-              <Card.Content>
-                <Title>{item.ProductName}</Title>
-                <Paragraph>{item.Description}</Paragraph>
-              </Card.Content>
-            </Card>
-          ))}
+        {DATA.data
+          ? DATA?.data?.map((item: any) => (
+              <Card
+                key={item.id}
+                style={{width: '45%', margin: 5}}
+                onPress={() =>
+                  navigation.navigate('productDescription', {data: item})
+                }>
+                <Card.Cover source={{uri: `${item.URL}`}} />
+                <Card.Content>
+                  <Title>{item.ProductName}</Title>
+                  <Paragraph>{item.Description}</Paragraph>
+                </Card.Content>
+              </Card>
+            ))
+          : NODATA?.map((item: any, index: any) => (
+              <Card key={index} style={{width: '45%', margin: 5}}>
+                <Card.Content>
+                  <Skeleton width={130} height={120} animation="pulse" />
+                  <View style={{marginTop: 20}}>
+                    <Skeleton width={80} height={10} animation="pulse" />
+                  </View>
+                  <View style={{marginTop: 10}}>
+                    <Skeleton width={80} height={10} animation="pulse" />
+                  </View>
+                </Card.Content>
+              </Card>
+            ))}
       </ScrollView>
     </PaperProvider>
   );

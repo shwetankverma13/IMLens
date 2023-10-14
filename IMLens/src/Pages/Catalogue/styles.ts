@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
@@ -21,15 +21,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     paddingVertical: 15,
   },
+  // header: {
+  //   height: 50,
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   marginTop: 40,
+  //   paddingHorizontal: 10,
+  //   paddingBottom: 10,
+  //   borderBottomColor: '#BBC4C2',
+  //   borderBottomWidth: 0.5,
+  // },
   header: {
-    height: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 40,
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-    borderBottomColor: '#BBC4C2',
-    borderBottomWidth: 0.5,
+    backgroundColor: '#3498db',
+    height: 60,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // padding: 10,
+    marginBottom: 10,
+  },
+  backButton: {
+    position: 'absolute',
+    left: 10,
+    top: 20,
   },
 });
 

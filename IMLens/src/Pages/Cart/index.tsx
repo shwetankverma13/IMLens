@@ -8,8 +8,7 @@ import {
   Text,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {decrement, increment, removeItem} from '../../store/actions/cart';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {decrement, increment} from '../../store/actions/cart';
 const Cart = ({navigation}: any) => {
   const total = useSelector((state: any) => state.CartReducer.globaltotal);
   const data = useSelector((state: any) => state.CartReducer);
@@ -35,7 +34,7 @@ const Cart = ({navigation}: any) => {
                 onPress={() => {
                   navigation.navigate('catalog');
                 }}>
-                {'Back'}
+                <Text style={{color: 'white'}}>{'Back'}</Text>
               </Button>
             </View>
           </View>
@@ -74,7 +73,7 @@ const Cart = ({navigation}: any) => {
                     style={styles.counterButtons}
                     onPress={() => {
                       dispatch(decrement(item.id));
-                      if (data.data.length == 1 && item.count == 0) {
+                      if (data.data.length === 1 && item.count == 0) {
                         navigation.navigate('home');
                       }
                     }}>
@@ -86,18 +85,6 @@ const Cart = ({navigation}: any) => {
                     <Text style={styles.greyColor}>Total</Text>
                     <Text style={styles.weightedText}>₹ {item.total}</Text>
                   </View>
-                  <AntDesign
-                    size={20}
-                    name="close"
-                    color="tomato"
-                    onPress={() => {
-                      dispatch(decrement(item.id));
-                      dispatch(removeItem(item.id, item.total, item.count));
-                      if (data.data.length == 1) {
-                        navigation.navigate('home'); //dispatch doesn't pause execution the next statements in your component. This means that any code that comes after the dispatch call will continue to execute immediately, and the component will re-render after the state update has completed.
-                      }
-                    }}
-                  />
                 </View>
               </View>
             </View>
@@ -130,13 +117,17 @@ const Cart = ({navigation}: any) => {
           <Text style={styles.weightedText}>₹ {total}</Text>
         </View>
       </ScrollView>
-      <TouchableOpacity
-        style={styles.counterButtons}
-        onPress={() => {
-          navigation.navigate('successPage');
-        }}>
-        <Text>Place Order</Text>
-      </TouchableOpacity>
+      <View style={{backgroundColor: 'white'}}>
+        <TouchableOpacity
+          style={styles.placedButton}
+          onPress={() => {
+            navigation.navigate('successPage');
+          }}>
+          <Text style={{color: 'white', fontWeight: '600', fontSize: 16}}>
+            Place Order
+          </Text>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
@@ -151,7 +142,7 @@ const styles = StyleSheet.create({
   counterButtons: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: '#FEF2EE',
+    backgroundColor: '#3498db',
     borderRadius: 4,
   },
   counterbuttonview: {
@@ -206,21 +197,23 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   cartHeader: {
-    marginTop: 40,
     flexDirection: 'row',
     gap: 10,
     alignItems: 'center',
     padding: 10,
     paddingBottom: 15,
+    backgroundColor: '#3498db',
   },
   remove: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#F15927',
+    color: '#3498db',
   },
   heading: {
     fontWeight: '500',
     fontSize: 17,
+    marginLeft: '15%',
+    color: 'white',
   },
   counterValue: {
     paddingHorizontal: 22,
@@ -230,11 +223,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   counterButtonText: {
-    color: 'tomato',
-    fontWeight: '600',
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '800',
   },
   white: {
     backgroundColor: 'white',
+  },
+  placedButton: {
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    borderRadius: 4,
+    backgroundColor: '#3498db',
+    marginBottom: '5%',
+    width: '40%',
+    alignItems: 'center',
+    display: 'flex',
+    marginLeft: '30%',
   },
 });
 export default Cart;

@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {Button, Image, View} from 'react-native';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
-const Scanning = () => {
+const Scanning = ({navigation}: any) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [clicked, setClicked] = useState(false);
 
   const openImagePicker = () => {
     const options = {
@@ -28,7 +29,7 @@ const Scanning = () => {
   const handleCameraLaunch = () => {
     const options = {
       mediaType: 'photo',
-      includeBase64: false,
+      includeBase64: true,
       maxHeight: 2000,
       maxWidth: 2000,
     };
@@ -43,6 +44,7 @@ const Scanning = () => {
         // Process the captured image
         let imageUri = response.uri || response.assets?.[0]?.uri;
         setSelectedImage(imageUri);
+        setClicked(true);
         console.log(imageUri);
       }
     });
@@ -56,6 +58,14 @@ const Scanning = () => {
           style={{flex: 1}}
           resizeMode="contain"
         />
+      )}
+      {clicked && (
+        <View style={{marginTop: 20, marginBottom: 50}}>
+          <Button
+            title="Proceed"
+            onPress={() => navigation.navigate('catalog')}
+          />
+        </View>
       )}
       <View style={{marginTop: 20}}>
         <Button title="Choose from Device" onPress={openImagePicker} />

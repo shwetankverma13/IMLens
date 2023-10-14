@@ -1,10 +1,16 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    // justifyContent: 'flex',
     alignItems: 'center',
     backgroundColor: '#ffffff',
+    flexDirection: 'column',
+    // alignContent: 'space-between',
+    justifyContent: 'space-between',
+    // marginBottom: '20%',
+    // maxHeight: '70%',
+    paddingBottom: '20%',
   },
   logo: {
     width: 150,
@@ -18,9 +24,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    color: 'black',
+    paddingTop: '20%',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 20,
+    fontStyle: 'italic',
     marginTop: '8%',
     paddingLeft: '5%',
     paddingRight: '5%',
@@ -28,12 +37,13 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     color: '#555',
     marginBottom: 30,
+    // paddingBottom: '10%',
+    // paddingTop: '10%',
   },
   button: {
     backgroundColor: '#007AFF',
     padding: 15,
     borderRadius: 5,
-    marginTop: '20%',
   },
   buttonText: {
     color: '#fff',
