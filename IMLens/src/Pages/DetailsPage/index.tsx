@@ -10,9 +10,6 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addItem} from '../../store/actions/cart';
-//import FontAwesome from 'react-native-vector-icons/FontAwesome';
-// import {Icon} from 'react-native-vector-icons/Icon';
-// import {Icon} from 'react-native-elements';
 
 const ProductDescription = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -35,7 +32,7 @@ const ProductDescription = ({navigation}: any) => {
             style={styles.backButton}>
             <Image
               source={require('../../Assets/backbutton.png')}
-              style={{width: 20, height: 20}}
+              style={{width: 20, height: 20, tintColor: 'white'}}
             />
           </TouchableOpacity>
         </View>

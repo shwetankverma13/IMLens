@@ -41,7 +41,7 @@ const CatalogPage = ({navigation}: any) => {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <View style={{marginBottom: '13.5%'}}>
+          <View style={{marginBottom: '14.5%'}}>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('Scanning');
@@ -49,21 +49,40 @@ const CatalogPage = ({navigation}: any) => {
               style={styles.backButton}>
               <Image
                 source={require('../../Assets/barcode-scanner.png')}
-                style={{width: 20, height: 20}}
+                style={{
+                  width: 20,
+                  height: 20,
+                  tintColor: 'white',
+                  marginBottom: 55,
+                }}
               />
             </TouchableOpacity>
           </View>
           <View style={{marginLeft: '10%', marginTop: '2%'}}>
             <Button
+              textColor="white"
               onPress={() => {
                 navigation.navigate('Scanning');
               }}>
-              <Title style={{color: 'white'}}>Scan-Again</Title>
+              <Title
+                style={{
+                  color: 'white',
+                }}>
+                Scan-Again
+              </Title>
             </Button>
           </View>
         </View>
       </View>
-      <Title style={{marginBottom: 10, marginLeft: 10}}>Catalog Title</Title>
+      <Title
+        style={{
+          marginBottom: 10,
+          marginLeft: '35%',
+          fontWeight: 'bold',
+          fontSize: 20,
+        }}>
+        Catalogue
+      </Title>
       <ScrollView
         contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {DATA.data

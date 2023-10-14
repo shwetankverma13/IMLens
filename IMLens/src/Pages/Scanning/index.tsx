@@ -89,7 +89,13 @@ const Scanning = ({navigation}: any) => {
         />
       )}
       {clicked && !response && (
-        <View style={{marginTop: 20, marginBottom: 50}}>
+        <View
+          style={{
+            marginTop: 20,
+            width: '60%',
+            marginLeft: '20%',
+            borderRadius: 10,
+          }}>
           <Button
             title="Proceed"
             onPress={() => navigation.navigate('catalog')}
@@ -97,7 +103,13 @@ const Scanning = ({navigation}: any) => {
         </View>
       )}
       {clicked && response && (
-        <View style={{marginTop: 20, marginBottom: 50}}>
+        <View
+          style={{
+            marginTop: 20,
+            width: '60%',
+            marginLeft: '20%',
+            borderRadius: 10,
+          }}>
           <Button
             title="Proceed"
             onPress={() =>
@@ -106,10 +118,23 @@ const Scanning = ({navigation}: any) => {
           />
         </View>
       )}
-      <View style={{marginTop: 20}}>
+      <View
+        style={{
+          marginTop: 20,
+          width: '60%',
+          marginLeft: '20%',
+          borderRadius: 10,
+        }}>
         <Button title="Choose from Device" onPress={openImagePicker} />
       </View>
-      <View style={{marginTop: 20, marginBottom: 50}}>
+      <View
+        style={{
+          marginTop: 20,
+          marginBottom: 20,
+          width: '60%',
+          marginLeft: '20%',
+          borderRadius: 10,
+        }}>
         <Button title="Open Camera" onPress={handleCameraLaunch} />
       </View>
     </View>

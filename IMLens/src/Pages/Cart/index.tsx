@@ -30,7 +30,7 @@ const Cart = ({navigation}: any) => {
                 }}>
                 <Image
                   source={require('../../Assets/backbutton.png')}
-                  style={{width: 20, height: 20}}
+                  style={{width: 20, height: 20, tintColor: 'white'}}
                 />
               </TouchableOpacity>
             </View>

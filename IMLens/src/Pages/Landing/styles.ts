@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     // paddingTop: '10%',
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#1B8CDE',
     padding: 15,
     borderRadius: 5,
   },
